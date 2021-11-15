@@ -1,0 +1,19 @@
+main {
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+  grid-gap: 0px;
+}
+
+app-quadrato {
+  border: 1px rgb(209, 208, 208);
+  height: 200px;
+}
+
+.paragrafi {
+  display: flex;
+  flex-direction: column;
+}
+
+.pulsanteRestart {
+  width: 80px;
+}
