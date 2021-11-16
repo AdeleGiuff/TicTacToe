@@ -4,31 +4,30 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
+import { PartitaService } from '../partita.service';
 
 @Component({
   selector: 'app-griglia',
   templateUrl: './griglia.component.html',
   styleUrls: ['./griglia.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  //changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GrigliaComponent implements OnInit {
   // i quadrati, cioè le nove mosse sono un array di stringhe.
-  quadrati!: any[];
-  giocatoreAttuale: 'X' | 'O' | null = 'X';
-  vincitore!: string | null;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {}
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef,
+    public partitaService: PartitaService
+  ) {}
 
-  ngOnInit() {
-    this.nuovaPartita();
-  }
+  ngOnInit() {}
 
   nuovaPartita() {
     //per la proprietà quadrati creiamo un array di 9 elementi al quale inizialmente diamo il valore null.
-    this.quadrati = Array(9).fill(null);
+    this.partitaService.quadrati = Array(9).fill(null);
     // quando la proprietà giocatore attuale è settata in true il vincitore ha valore null.
-    this.giocatoreAttuale = 'X'; //true == X, false == O
-    this.vincitore = null;
+    this.partitaService.giocatoreAttuale = 'X'; //true == X, false == O
+    this.partitaService.vincitore = null;
   }
   //con il getter gestiamo la logica della UI del pulsante giocatore
   // get giocatore() {
@@ -37,20 +36,25 @@ export class GrigliaComponent implements OnInit {
   //   return this.giocatoreAttuale ? 'X' : 'O';
   // }
   faiUnaMossa(index: number, event: string) {
+    if (this.partitaService.vincitore) {
+      return;
+    }
     console.log(event);
     // se i quadrati sono già stati cliccati non sarà possibile ricliccarli.
     //Se i quadrati sono vuoti, utilizzando il metodo splice tagliamo l'array dalla posizione del quadrato su cui abbiamo cliccato
     //per cambiare la UI del giocatore settiamo il giocatoreAttuale al valore opposto.
     setTimeout(() => {
-      if (!this.quadrati[index]) {
-        this.quadrati = this.quadrati.map((x, i) =>
-          i === index ? this.giocatoreAttuale : x
+      if (!this.partitaService.quadrati[index]) {
+        this.partitaService.quadrati = this.partitaService.quadrati.map(
+          (x, i) => (i === index ? this.partitaService.giocatoreAttuale : x)
         );
         //this.quadrati.splice(index, 1, this.giocatoreAttuale);
-        this.giocatoreAttuale = this.giocatoreAttuale === 'X' ? 'O' : 'X';
+        this.partitaService.giocatoreAttuale =
+          this.partitaService.giocatoreAttuale === 'X' ? 'O' : 'X';
       }
+
+      this.partitaService.vincitore = this.calcolaVincitore();
       this.changeDetectorRef.detectChanges();
-      this.vincitore = this.calcolaVincitore();
     }, 0);
   }
   calcolaVincitore() {
@@ -69,11 +73,11 @@ export class GrigliaComponent implements OnInit {
     for (let i = 0; i < righe.length; i++) {
       const [a, b, c] = righe[i];
       if (
-        this.quadrati[a] &&
-        this.quadrati[a] === this.quadrati[b] &&
-        this.quadrati[a] === this.quadrati[c]
+        this.partitaService.quadrati[a] &&
+        this.partitaService.quadrati[a] === this.partitaService.quadrati[b] &&
+        this.partitaService.quadrati[a] === this.partitaService.quadrati[c]
       ) {
-        return this.quadrati[a];
+        return this.partitaService.quadrati[a];
       }
     }
     return null;

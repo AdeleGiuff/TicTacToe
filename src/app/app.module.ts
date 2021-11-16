@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { PaginaGiocoComponent } from './pagina-gioco/pagina-gioco.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
+import { PartitaService } from './partita.service';
 
 @NgModule({
   declarations: [
@@ -17,14 +18,10 @@ import { NavbarComponent } from './navbar/navbar.component';
     GrigliaComponent,
     HomeComponent,
     PaginaGiocoComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, NgbModule],
+  providers: [PartitaService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

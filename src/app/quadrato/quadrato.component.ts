@@ -5,7 +5,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   selector: 'app-quadrato',
   template: `<div class="pulsante">
     {{ valore }}
-    <button (click)="buttonClick()">play</button>
+    <button class="btn-play" (click)="buttonClick()">play</button>
   </div>`,
 })
 export class QuadratoComponent {
