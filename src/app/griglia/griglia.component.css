@@ -2,16 +2,27 @@ main {
   display: grid;
   grid-template-columns: 200px 200px 200px;
   grid-gap: 0px;
+  align-items: center;
 }
 
 app-quadrato {
   border: 1px rgb(209, 208, 208);
   height: 200px;
 }
-
-.paragrafi {
+.container-gioco {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.paragrafi {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .pulsanteRestart {

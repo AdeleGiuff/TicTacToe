@@ -1,18 +1,20 @@
-<main>
-  <!--Mettiamo insieme ogni quadrato che costituisce la nostra griglia di gioco-->
-  <!--L'ngFor ci renderizza il componente quadrato tante volte quanti sono gli elementi all'interno dell'array di quadrati -->
-  <app-quadrato
-    *ngFor="let val of quadrati; let i = index"
-    [valore]="val"
-    (onPlay)="faiUnaMossa(i, $event)"
-  >
-  </app-quadrato>
-</main>
+<div class="container-gioco">
+  <main>
+    <!--Mettiamo insieme ogni quadrato che costituisce la nostra griglia di gioco-->
+    <!--L'ngFor ci renderizza il componente quadrato tante volte quanti sono gli elementi all'interno dell'array di quadrati -->
+    <app-quadrato
+      *ngFor="let val of quadrati; let i = index"
+      [valore]="val"
+      (onPlay)="faiUnaMossa(i, $event)"
+    >
+    </app-quadrato>
+  </main>
 
-<div class="paragrafi">
-  <!--Mostriamo il paragrafo sottostante solo se il vincitore non esiste-->
-  <p *ngIf="!vincitore">E' il turno del giocatore {{ giocatoreAttuale }}</p>
-  <!--Mostriamo il template del vincitore solo se il vincitore esiste-->
-  <p *ngIf="vincitore">Vince il giocatore {{ vincitore }}</p>
-  <button (click)="nuovaPartita()" class="pulsanteRestart">Restart</button>
+  <div class="paragrafi">
+    <!--Mostriamo il paragrafo sottostante solo se il vincitore non esiste-->
+    <p *ngIf="!vincitore">E' il turno del giocatore {{ giocatoreAttuale }}</p>
+    <!--Mostriamo il template del vincitore solo se il vincitore esiste-->
+    <p *ngIf="vincitore">Vince il giocatore {{ vincitore }}</p>
+    <button (click)="nuovaPartita()" class="pulsanteRestart">Restart</button>
+  </div>
 </div>
