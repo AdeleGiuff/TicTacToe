@@ -23,6 +23,8 @@
     "@nebular/eva-icons": "8.0.0",
     "@nebular/theme": "^8.0.0",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
+    "@ngrx/store": "^12.5.1",
+    "@ngrx/store-devtools": "^12.5.1",
     "@ngx-pwa/local-storage": "^12.1.0",
     "bootstrap": "^4.5.0",
     "eva-icons": "^1.1.2",
