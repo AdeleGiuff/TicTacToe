@@ -1,6 +1,5 @@
 import { Action, createReducer, createFeatureSelector, on } from '@ngrx/store';
-import { Stats } from 'fs';
-import { calcolaVincitore, faiUnaMossa, nuovaPartita } from './griglia.actions';
+import { faiUnaMossa, nuovaPartita } from './griglia.actions';
 
 export interface GrigliaState {
   quadrati: any[];
@@ -23,53 +22,50 @@ const reducer = createReducer(
   })),
   on(faiUnaMossa, (state, action) => {
     /*if (!state.quadrati[action.index]) {*/
-    let quadrati = state.quadrati.map((x, i) =>
+    const quadrati = state.quadrati.map((x, i) =>
       i === action.index ? state.giocatoreAttuale : x
     );
     /*}*/
-    let giocatoreAttuale = state.giocatoreAttuale === 'X' ? 'O' : 'X';
-
-    let vincitore = state.vincitore;
+    const giocatoreAttuale = state.giocatoreAttuale === 'X' ? 'O' : 'X';
+    const vincitore = fnCalcolaVincitore(quadrati);
     //vincitore = calcolaVincitore();
     return {
       ...state,
-      quadrati: quadrati,
-      giocatoreAttuale: giocatoreAttuale,
-      vincitore: vincitore,
+      quadrati,
+      giocatoreAttuale,
+      vincitore,
     };
-  }),
+  })
+);
 
-  on(calcolaVincitore, (state) => {
-    const righe = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6],
-      ];
-      for (let i = 0; i < righe.length; i++) {
-        const [a, b, c] = righe[i];
-        if (
-          state.quadrati[a] &&
-          state.quadrati[a] === state.quadrati[b] &&
-          state.quadrati[a] === state.quadrati[c]
-        ) {
-          return state.quadrati[a];
-        }}
-        return {
-            ...state,
-            quadrati: state.quadrati = null,
-            giocatoreAttuale: state.giocatoreAttuale = null,
-            vincitore: state.vincitore = null
-  }})
 export function grigliaReducer(state: GrigliaState, action: Action) {
   return reducer(state, action);
 }
 
 export const grigliaSelector = createFeatureSelector<GrigliaState>('griglia');
+
+export function fnCalcolaVincitore(quadrati: any[]) {
+  const righe = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  for (let i = 0; i < righe.length; i++) {
+    const [a, b, c] = righe[i];
+    if (
+      quadrati[a] &&
+      quadrati[a] === quadrati[b] &&
+      quadrati[a] === quadrati[c]
+    ) {
+      return quadrati[a];
+    }
+  }
+}
 
 /*if (state.vincitore) {
     return;

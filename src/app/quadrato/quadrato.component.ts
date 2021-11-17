@@ -13,6 +13,7 @@ export class QuadratoComponent {
   //Quando una componente ha un solo input viene chiamata componente UI
 
   @Input() valore!: 'X' | 'O';
+  @Input() giaCliccato!: number;
   @Output() onPlay = new EventEmitter<string>();
 
   ngOnInit() {}

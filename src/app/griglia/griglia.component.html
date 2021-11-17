@@ -3,9 +3,9 @@
     <!--Mettiamo insieme ogni quadrato che costituisce la nostra griglia di gioco-->
     <!--L'ngFor ci renderizza il componente quadrato tante volte quanti sono gli elementi all'interno dell'array di quadrati -->
     <app-quadrato
-      *ngFor="let val of quadrati; let i = index"
+      *ngFor="let val of quadrati$ | async; let i = index"
       [valore]="val"
-      (onPlay)="clickFaiUnaMossa()"
+      (onPlay)="clickFaiUnaMossa(i)"
     >
     </app-quadrato>
   </main>

@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
   faiUnaMossa,
-  calcolaVincitore,
   nuovaPartita,
 } from '../griglia-stato-store/griglia.actions';
 import { grigliaSelector } from '../griglia-stato-store/griglia.reducer';
@@ -27,11 +26,8 @@ export class GrigliaComponent implements OnInit {
 
   ngOnInit() {}
 
-  clickFaiUnaMossa() {
+  clickFaiUnaMossa(index: number) {
     this.store.dispatch(faiUnaMossa({ index }));
-  }
-  clickCalcolaVincitore() {
-    this.store.dispatch(calcolaVincitore());
   }
 
   clickNuovaPartita() {
