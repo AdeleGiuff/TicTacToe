@@ -3,6 +3,7 @@ import { faiUnaMossa, nuovaPartita } from './griglia.actions';
 
 export interface GrigliaState {
   quadrati: any[];
+  vinto: boolean;
   // quando la proprietà giocatore attuale è settata in true il vincitore ha valore null.
   giocatoreAttuale: 'X' | 'O' | null; //true == X, false == O
   vincitore: string | null;
@@ -10,6 +11,7 @@ export interface GrigliaState {
 
 export const initialState: GrigliaState = {
   quadrati: ([] = Array(9).fill(null)),
+  vinto: false,
   giocatoreAttuale: 'X',
   vincitore: null,
 };
@@ -25,10 +27,13 @@ const reducer = createReducer(
       i === action.index ? state.giocatoreAttuale : x
     );
     const giocatoreAttuale = state.giocatoreAttuale === 'X' ? 'O' : 'X';
-    const vincitore = fnCalcolaVincitore(quadrati);
+    const vincitore = fnCalcolaVincitore(state.quadrati);
+    const vinto = Boolean(vincitore);
+
     return {
       ...state,
       quadrati,
+      vinto,
       giocatoreAttuale,
       vincitore,
     };
@@ -64,41 +69,9 @@ export function fnCalcolaVincitore(quadrati: any[]) {
   }
 }
 
-/*if (state.vincitore) {
-    return;
+/*export function finePartita(vincitore: any, quadrati: any[]) {
+  vincitore = fnCalcolaVincitore(quadrati);
+  if (vincitore) {
+    return vincitore;
   }
-  
-    if (!state.quadrati[index]) {
-        state.quadrati = state.quadrati.map(
-        (x, i) => (i === index ? state.giocatoreAttuale : x)
-      );
-      state.giocatoreAttuale === 'X' ? 'O' : 'X';
-    }
-
-    state.vincitore = calcolaVincitore();
-    
-}
-
-const righe = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
-
-  for (let i = 0; i < righe.length; i++) {
-    const [a, b, c] = righe[i];
-    if (
-      state.quadrati[a] &&
-      state.quadrati[a] === state.quadrati[b] &&
-      state.quadrati[a] === state.quadrati[c]
-    ) {
-      return state.quadrati[a];
-    }
-  }
-  return null;
 }*/

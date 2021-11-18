@@ -21,6 +21,7 @@ export class GrigliaComponent implements OnInit {
 
   griglia$ = this.store.select(grigliaSelector);
   quadrati$ = this.griglia$.pipe(map((x) => x.quadrati));
+  vinto$ = this.griglia$.pipe(map((x) => Boolean(x.vincitore)));
   giocatoreAttuale$ = this.griglia$.pipe(map((x) => x.giocatoreAttuale));
   vincitore$ = this.griglia$.pipe(map((x) => x.vincitore));
 

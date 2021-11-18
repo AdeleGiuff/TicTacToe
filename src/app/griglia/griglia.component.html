@@ -5,6 +5,7 @@
     <app-quadrato
       *ngFor="let val of quadrati$ | async; let i = index"
       [valore]="val"
+      [disabilitato]="vinto$ | async"
       (onPlay)="clickFaiUnaMossa(i)"
     >
     </app-quadrato>
@@ -12,11 +13,13 @@
 
   <div class="paragrafi">
     <!--Mostriamo il paragrafo sottostante solo se il vincitore non esiste-->
-    <p *ngIf="!vincitore$">
+    <p *ngIf="!(vincitore$ | async)">
       E' il turno del giocatore {{ giocatoreAttuale$ | async }}
     </p>
     <!--Mostriamo il template del vincitore solo se il vincitore esiste-->
-    <p *ngIf="vincitore$">Vince il giocatore {{ vincitore$ | async }}</p>
+    <p *ngIf="vincitore$ | async">
+      Vince il giocatore {{ vincitore$ | async }}
+    </p>
     <button (click)="clickNuovaPartita()" class="pulsanteRestart">
       Restart
     </button>
