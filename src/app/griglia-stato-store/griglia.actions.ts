@@ -5,4 +5,3 @@ export const faiUnaMossa = createAction(
   'GRIGLIA/faiUnaMossa',
   props<{ index: number }>()
 );
-export const calcolaVincitore = createAction('GRIGLIA/calcolaVincitore');

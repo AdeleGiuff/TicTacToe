@@ -1,11 +1,16 @@
 //inlineTemplate e inlineStyle component
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
 @Component({
   selector: 'app-quadrato',
   template: `<div class="pulsante">
     {{ valore }}
-    <button class="btn-play" (click)="buttonClick()">play</button>
+    <button
+      class="btn-play"
+      [disabled]="valore !== null"
+      (click)="buttonClick()"
+    >
+      play
+    </button>
   </div>`,
 })
 export class QuadratoComponent {
@@ -13,7 +18,6 @@ export class QuadratoComponent {
   //Quando una componente ha un solo input viene chiamata componente UI
 
   @Input() valore!: 'X' | 'O';
-  @Input() giaCliccato!: number;
   @Output() onPlay = new EventEmitter<string>();
 
   ngOnInit() {}

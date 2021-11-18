@@ -21,14 +21,11 @@ const reducer = createReducer(
     ...initialState,
   })),
   on(faiUnaMossa, (state, action) => {
-    /*if (!state.quadrati[action.index]) {*/
     const quadrati = state.quadrati.map((x, i) =>
       i === action.index ? state.giocatoreAttuale : x
     );
-    /*}*/
     const giocatoreAttuale = state.giocatoreAttuale === 'X' ? 'O' : 'X';
     const vincitore = fnCalcolaVincitore(quadrati);
-    //vincitore = calcolaVincitore();
     return {
       ...state,
       quadrati,
