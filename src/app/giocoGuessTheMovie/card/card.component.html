@@ -1,13 +1,13 @@
 <div class="containerGuess">
   <div class="card">
     <h5 class="card-title mt-3">GUESS THE MOVIE</h5>
-    <app-titoli></app-titoli>
+    <p *ngFor="let item of titoli">{{ item.nome }}</p>
     <div class="card-body">
       <div class="indovinaLettere">
         <div class="textBody">
           <p class="card-text">Indovina le lettere</p>
           <p class="card-text">Tentativi :</p>
-          <app-inserimento-lettera></app-inserimento-lettera>
+
           <div class="input-group">
             <input
               type="text"

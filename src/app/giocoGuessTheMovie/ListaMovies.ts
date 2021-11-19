@@ -1,6 +1,6 @@
-import { Titolo } from './Titolo';
+import { Film } from './Film';
 
-export const TITOLI: Titolo[] = [
+export const MOVIES: Film[] = [
   {
     nome: 'Lord Of The Rings',
     suggerimento:

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Titolo } from '../Titolo';
+import { Film } from '../Film';
 
 @Component({
   selector: 'app-composizione-titolo',
@@ -7,8 +7,6 @@ import { Titolo } from '../Titolo';
   styleUrls: ['./composizione-titolo.component.css'],
 })
 export class ComposizioneTitoloComponent implements OnInit {
-  @Input() titolo: Titolo;
-
   constructor() {}
 
   ngOnInit(): void {}

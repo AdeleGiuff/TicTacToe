@@ -1,4 +1,4 @@
-export interface Titolo {
+export interface Film {
   nome: string;
   suggerimento: string;
 }
