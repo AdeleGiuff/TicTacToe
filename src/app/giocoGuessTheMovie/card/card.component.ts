@@ -7,7 +7,7 @@ import { Film } from '../Film';
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent implements OnInit {
-  //titoloFilm: MOVIES: Film[];
+  //titoloFilm: MOVIES[];
 
   constructor() {}
 
