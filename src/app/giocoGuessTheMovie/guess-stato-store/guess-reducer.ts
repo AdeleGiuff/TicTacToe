@@ -3,37 +3,31 @@ import { Film } from '../Film';
 import { nuovaPartita } from './guess.actions';
 import { MOVIES } from '../ListaMovies';
 
-export interface giocoGuessState {
-  nomeFilm: Film;
+export interface GiocoGuessState {
+  nomefilm: Film | null;
 }
 
-export const initialState: giocoGuessState = {
-  nomeFilm: null,
+const randomNome = Math.floor(Math.random() * 6);
+
+export const initialState: GiocoGuessState = {
+  nomefilm: MOVIES[randomNome],
 };
 
 const reducer = createReducer(
   initialState,
 
-  on(nuovaPartita, (state) => {
-    const film = getRandomNome(state.nomeFilm);
-    return {
-      ...state,
-      film,
-    };
-  })
+  on(nuovaPartita, (state) => ({
+    ...state,
+    ...initialState,
+  }))
 );
 
 export function PaginaGiocoGuessReducer(
-  state: giocoGuessState,
+  state: GiocoGuessState,
   action: Action
 ) {
   return reducer(state, action);
 }
 
 export const giocoGuessSelector =
-  createFeatureSelector<giocoGuessState>('GIOCOGUESS');
-
-export function getRandomNome(film) {
-  let index = Math.floor(Math.random() * 6);
-  film = MOVIES[index];
-}
+  createFeatureSelector<GiocoGuessState>('GIOCOGUESS');

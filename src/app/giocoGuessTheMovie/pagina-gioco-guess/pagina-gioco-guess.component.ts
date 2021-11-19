@@ -13,7 +13,7 @@ export class PaginaGiocoGuessComponent implements OnInit {
   constructor(private store: Store) {}
 
   giocoGuess$ = this.store.select(giocoGuessSelector);
-  nomeFilm$ = this.giocoGuess$.pipe(map((x) => x.nomeFilm));
+  nomeFilm$ = this.giocoGuess$.pipe(map((x) => x.nomefilm));
 
   ngOnInit(): void {
     // Recuperare un film a caso tra i 6 proposti
