@@ -16,6 +16,10 @@ import { BenvenutoTicComponent } from './pagineBenvenuto/benvenuto-tic/benvenuto
 import { BenvenutoGuessComponent } from './pagineBenvenuto/benvenuto-guess/benvenuto-guess.component';
 import { PaginaGiocoGuessComponent } from './giocoGuessTheMovie/pagina-gioco-guess/pagina-gioco-guess.component';
 import { CardComponent } from './giocoGuessTheMovie/card/card.component';
+import { InserimentoLetteraComponent } from './giocoGuessTheMovie/inserimento-lettera/inserimento-lettera.component';
+import { ComposizioneTitoloComponent } from './giocoGuessTheMovie/composizione-titolo/composizione-titolo.component';
+import { InserimentoTitoloComponent } from './giocoGuessTheMovie/inserimento-titolo/inserimento-titolo.component';
+import { PulsantiSuggerimentoComponent } from './giocoGuessTheMovie/pulsanti-suggerimento/pulsanti-suggerimento.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,10 @@ import { CardComponent } from './giocoGuessTheMovie/card/card.component';
     BenvenutoGuessComponent,
     PaginaGiocoGuessComponent,
     CardComponent,
+    InserimentoLetteraComponent,
+    ComposizioneTitoloComponent,
+    InserimentoTitoloComponent,
+    PulsantiSuggerimentoComponent,
   ],
   imports: [
     BrowserModule,
