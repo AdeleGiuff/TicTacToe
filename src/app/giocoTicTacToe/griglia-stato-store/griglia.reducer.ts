@@ -3,7 +3,6 @@ import { faiUnaMossa, nuovaPartita } from './griglia.actions';
 
 export interface GrigliaState {
   quadrati: any[];
-  vinto: boolean;
   // quando la proprietà giocatore attuale è settata in true il vincitore ha valore null.
   giocatoreAttuale: 'X' | 'O' | null; //true == X, false == O
   vincitore: string | null;
@@ -11,7 +10,6 @@ export interface GrigliaState {
 
 export const initialState: GrigliaState = {
   quadrati: ([] = Array(9).fill(null)),
-  vinto: false,
   giocatoreAttuale: 'X',
   vincitore: null,
 };
@@ -27,13 +25,11 @@ const reducer = createReducer(
       i === action.index ? state.giocatoreAttuale : x
     );
     const giocatoreAttuale = state.giocatoreAttuale === 'X' ? 'O' : 'X';
-    const vincitore = fnCalcolaVincitore(state.quadrati);
-    const vinto = Boolean(vincitore);
+    const vincitore = fnCalcolaVincitore(quadrati);
 
     return {
       ...state,
       quadrati,
-      vinto,
       giocatoreAttuale,
       vincitore,
     };

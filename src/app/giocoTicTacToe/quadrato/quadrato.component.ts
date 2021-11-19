@@ -8,7 +8,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
     <button class="btn-play" [disabled]="disabilitato" (click)="buttonClick()">
       play
     </button>
-    {{ disabilitato }}
   </div>`,
 })
 export class QuadratoComponent {

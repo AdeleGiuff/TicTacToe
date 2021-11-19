@@ -5,7 +5,7 @@
     <app-quadrato
       *ngFor="let val of quadrati$ | async; let i = index"
       [valore]="val"
-      [disabilitato]="vinto$ | async"
+      [disabilitato]="(vinto$ | async) || val != null"
       (onPlay)="clickFaiUnaMossa(i)"
     >
     </app-quadrato>
