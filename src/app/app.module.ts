@@ -20,6 +20,7 @@ import { InserimentoLetteraComponent } from './giocoGuessTheMovie/inserimento-le
 import { ComposizioneTitoloComponent } from './giocoGuessTheMovie/composizione-titolo/composizione-titolo.component';
 import { InserimentoTitoloComponent } from './giocoGuessTheMovie/inserimento-titolo/inserimento-titolo.component';
 import { PulsantiSuggerimentoComponent } from './giocoGuessTheMovie/pulsanti-suggerimento/pulsanti-suggerimento.component';
+import { TitoliComponent } from './giocoGuessTheMovie/titoli/titoli.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { PulsantiSuggerimentoComponent } from './giocoGuessTheMovie/pulsanti-sug
     ComposizioneTitoloComponent,
     InserimentoTitoloComponent,
     PulsantiSuggerimentoComponent,
+    TitoliComponent,
   ],
   imports: [
     BrowserModule,
