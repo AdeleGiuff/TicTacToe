@@ -15,7 +15,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BenvenutoTicComponent } from './pagineBenvenuto/benvenuto-tic/benvenuto-tic.component';
 import { BenvenutoGuessComponent } from './pagineBenvenuto/benvenuto-guess/benvenuto-guess.component';
 import { PaginaGiocoGuessComponent } from './giocoGuessTheMovie/pagina-gioco-guess/pagina-gioco-guess.component';
-import { TabComponent } from './giocoGuessTheMovie/tab/tab.component';
+import { CardComponent } from './giocoGuessTheMovie/card/card.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { TabComponent } from './giocoGuessTheMovie/tab/tab.component';
     BenvenutoTicComponent,
     BenvenutoGuessComponent,
     PaginaGiocoGuessComponent,
-    TabComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
