@@ -1,1 +1,59 @@
-<app-card></app-card>
+<div class="containerGuess">
+  <div class="card">
+    <h5 class="card-title mt-3">GUESS THE MOVIE</h5>
+    <p>
+      {{ nomeFilm$ | async }}
+    </p>
+    <div class="card-body">
+      <div class="indovinaLettere">
+        <div class="textBody">
+          <p class="card-text">Indovina le lettere</p>
+          <p class="card-text">Tentativi :</p>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Inserisci le lettere"
+              aria-label="Recipient's username"
+              aria-describedby="button-addon2"
+            />
+            <button
+              class="btn btn-outline-warning"
+              type="button"
+              id="button-addon2"
+            >
+              indovina
+            </button>
+          </div>
+        </div>
+        <div class="indovinaFilm">
+          <div class="textBody">
+            <p class="card-text">Indovina il film</p>
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Inserisci il nome del film"
+                aria-label="Recipient's username"
+                aria-describedby="button-addon2"
+              />
+              <button
+                class="btn btn-outline-warning"
+                type="button"
+                id="button-addon2"
+              >
+                indovina
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="buttonBox mt-2">
+    <a href="#" class="btn btn-outline-info mr-3 w-40">abbandona :(</a>
+    <app-pulsanti-suggerimento></app-pulsanti-suggerimento>
+  </div>
+</div>
+
+{{ nomeFilm$ | async }}
