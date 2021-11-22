@@ -1,21 +1,18 @@
 import { Action, createReducer, createFeatureSelector, on } from '@ngrx/store';
-import { Film } from '../Film';
 import { nuovaPartita } from './guess.actions';
 import { MOVIES } from '../ListaMovies';
+import { Film } from '../Film';
 
 export interface GiocoGuessState {
   nomefilm: Film | null;
 }
 
-const randomNome = Math.floor(Math.random() * 6);
-
 export const initialState: GiocoGuessState = {
-  nomefilm: MOVIES[randomNome],
+  nomefilm: getRandomNome(MOVIES),
 };
 
 const reducer = createReducer(
   initialState,
-
   on(nuovaPartita, (state) => ({
     ...state,
     ...initialState,
@@ -31,3 +28,7 @@ export function PaginaGiocoGuessReducer(
 
 export const giocoGuessSelector =
   createFeatureSelector<GiocoGuessState>('GIOCOGUESS');
+
+function getRandomNome(arr: any[]) {
+  arr[Math.floor(Math.random() * arr.length)];
+}
