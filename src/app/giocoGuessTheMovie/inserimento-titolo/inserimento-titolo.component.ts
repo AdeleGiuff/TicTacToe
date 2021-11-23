@@ -18,5 +18,6 @@ export class InserimentoTitoloComponent implements OnInit {
     }
     this.aggiungiTitolo.emit(this.titoloFilm);
     this.titoloFilm = '';
+    console.log(this.titoloFilm);
   }
 }

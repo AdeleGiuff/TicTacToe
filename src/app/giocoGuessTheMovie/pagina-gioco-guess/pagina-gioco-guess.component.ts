@@ -19,10 +19,12 @@ export class PaginaGiocoGuessComponent implements OnInit {
 
   giocoGuess$ = this.store.select(GiocoGuessSelector);
   nomeFilm$ = this.giocoGuess$.pipe(map((x) => x.film.nome));
+  suggerimentoFilm$ = this.giocoGuess$.pipe(map((x) => x.film.suggerimento));
   nomeFilmOffuscato$ = this.giocoGuess$.pipe(map((x) => x.nomeOffuscato));
+  titoloUtente$ = this.giocoGuess$.pipe(map((x) => x.titoloUtente));
   lettereUtente$ = this.giocoGuess$.pipe(map((x) => x.lettereUtente));
   counter$ = this.giocoGuess$.pipe(map((x) => x.counter));
-  suggerimento$ = this.giocoGuess$.pipe(map((x) => x.suggerimento));
+  mostraSuggerimento$ = this.giocoGuess$.pipe(map((x) => x.mostraSuggerimento));
 
   ngOnInit(): void {}
 
@@ -39,7 +41,7 @@ export class PaginaGiocoGuessComponent implements OnInit {
   clickNuovaPartita() {
     this.store.dispatch(nuovaPartita());
   }
-  clickSuggerimento(suggerimento: string) {
-    this.store.dispatch(aggiungiSuggerimento({ suggerimento }));
+  clickSuggerimento() {
+    this.store.dispatch(aggiungiSuggerimento());
   }
 }

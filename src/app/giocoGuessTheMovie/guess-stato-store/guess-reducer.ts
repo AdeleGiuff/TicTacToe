@@ -15,7 +15,7 @@ export interface GiocoGuessState {
   titoloUtente: string | null;
   counter: number;
   sconfitta: string | null;
-  suggerimento: string;
+  mostraSuggerimento: boolean;
 }
 
 const lettereUtente = [' ', 'a', 'e', 'i', 'o', 'u'];
@@ -24,7 +24,7 @@ const nomeOffuscato = offuscaNome(film.nome, lettereUtente);
 const titoloUtente = null;
 const counter = 5;
 const sconfitta = null;
-const suggerimento = film.suggerimento;
+const mostraSuggerimento = false;
 
 export const initialState: GiocoGuessState = {
   film,
@@ -33,7 +33,7 @@ export const initialState: GiocoGuessState = {
   titoloUtente,
   counter,
   sconfitta,
-  suggerimento,
+  mostraSuggerimento,
 };
 
 const reducer = createReducer(
@@ -52,7 +52,8 @@ const reducer = createReducer(
     ]),
     counter: state.counter - 1,
     sconfitta: setSconfitta(counter),
-    suggerimento,
+
+    mostraSuggerimento,
   })),
   on(aggiungiTitolo, (state, action) => ({
     ...state,
@@ -60,16 +61,17 @@ const reducer = createReducer(
     titoloUtente: action.titoloFilm,
     nomeOffuscato: rivelaNomeIntero(film.nome, titoloUtente),
     sconfitta,
-    suggerimento,
+
+    mostraSuggerimento,
   })),
-  on(aggiungiSuggerimento, (state, action) => ({
+  on(aggiungiSuggerimento, (state) => ({
     ...state,
     lettereUtente,
     titoloUtente,
     nomeOffuscato,
     counter,
     sconfitta,
-    suggerimento: action.suggerimento,
+    mostraSuggerimento: !state.mostraSuggerimento,
   }))
 );
 export function GiocoGuessReducer(state: GiocoGuessState, action: Action) {
@@ -117,3 +119,9 @@ function setSconfitta(counter: any) {
     return counter;
   }
 }
+
+/*
+function mostraSuggerimento(suggerimento: string) {
+  if (suggerimento !== null){
+    return suggerimento
+  }*/

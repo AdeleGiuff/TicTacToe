@@ -18,7 +18,6 @@ import { PaginaGiocoGuessComponent } from './giocoGuessTheMovie/pagina-gioco-gue
 import { InserimentoLetteraComponent } from './giocoGuessTheMovie/inserimento-lettera/inserimento-lettera.component';
 import { ComposizioneTitoloComponent } from './giocoGuessTheMovie/composizione-titolo/composizione-titolo.component';
 import { InserimentoTitoloComponent } from './giocoGuessTheMovie/inserimento-titolo/inserimento-titolo.component';
-import { PulsantiSuggerimentoComponent } from './giocoGuessTheMovie/pulsanti-suggerimento/pulsanti-suggerimento.component';
 import { GiocoGuessReducer } from './giocoGuessTheMovie/guess-stato-store/guess-reducer';
 
 @NgModule({
@@ -35,7 +34,6 @@ import { GiocoGuessReducer } from './giocoGuessTheMovie/guess-stato-store/guess-
     InserimentoLetteraComponent,
     ComposizioneTitoloComponent,
     InserimentoTitoloComponent,
-    PulsantiSuggerimentoComponent,
   ],
   imports: [
     BrowserModule,

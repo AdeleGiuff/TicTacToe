@@ -11,6 +11,5 @@ export const aggiungiTitolo = createAction(
   props<{ titoloFilm: string }>()
 );
 export const aggiungiSuggerimento = createAction(
-  'GIOCOGUESS/aggiungiSuggerimento',
-  props<{ suggerimento: string }>()
+  'GIOCOGUESS/aggiungiSuggerimento'
 );
