@@ -15,6 +15,9 @@ export class InserimentoLetteraComponent implements OnInit {
   ngOnInit(): void {}
 
   buttonClick() {
+    if (!this.lettera) {
+      alert('scrivi una lettera');
+    }
     this.aggiungiLettera.emit(this.lettera);
     this.lettera = '';
   }

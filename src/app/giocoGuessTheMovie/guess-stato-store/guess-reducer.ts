@@ -1,5 +1,9 @@
 import { Action, createReducer, createFeatureSelector, on } from '@ngrx/store';
-import { aggiungiTitolo, gameOver, nuovaPartita } from './guess.actions';
+import {
+  aggiungiSuggerimento,
+  aggiungiTitolo,
+  nuovaPartita,
+} from './guess.actions';
 import { MOVIES } from '../ListaMovies';
 import { Film } from '../Film';
 import { aggiungiLettera } from './guess.actions';
@@ -9,9 +13,9 @@ export interface GiocoGuessState {
   nomeOffuscato: string;
   lettereUtente: string[];
   titoloUtente: string | null;
-
   counter: number;
   sconfitta: string | null;
+  suggerimento: string;
 }
 
 const lettereUtente = [' ', 'a', 'e', 'i', 'o', 'u'];
@@ -20,6 +24,7 @@ const nomeOffuscato = offuscaNome(film.nome, lettereUtente);
 const titoloUtente = null;
 const counter = 5;
 const sconfitta = null;
+const suggerimento = film.suggerimento;
 
 export const initialState: GiocoGuessState = {
   film,
@@ -28,6 +33,7 @@ export const initialState: GiocoGuessState = {
   titoloUtente,
   counter,
   sconfitta,
+  suggerimento,
 };
 
 const reducer = createReducer(
@@ -46,6 +52,7 @@ const reducer = createReducer(
     ]),
     counter: state.counter - 1,
     sconfitta: setSconfitta(counter),
+    suggerimento,
   })),
   on(aggiungiTitolo, (state, action) => ({
     ...state,
@@ -53,6 +60,16 @@ const reducer = createReducer(
     titoloUtente: action.titoloFilm,
     nomeOffuscato: rivelaNomeIntero(film.nome, titoloUtente),
     sconfitta,
+    suggerimento,
+  })),
+  on(aggiungiSuggerimento, (state, action) => ({
+    ...state,
+    lettereUtente,
+    titoloUtente,
+    nomeOffuscato,
+    counter,
+    sconfitta,
+    suggerimento: action.suggerimento,
   }))
 );
 export function GiocoGuessReducer(state: GiocoGuessState, action: Action) {

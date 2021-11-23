@@ -6,8 +6,11 @@ export const aggiungiLettera = createAction(
   props<{ lettera: string }>()
 );
 
-export const gameOver = createAction('GIOCOGUESS/gameOver');
 export const aggiungiTitolo = createAction(
-  'GIOCOGUESS/aggiungiLettera',
+  'GIOCOGUESS/aggiungiTitolo',
   props<{ titoloFilm: string }>()
+);
+export const aggiungiSuggerimento = createAction(
+  'GIOCOGUESS/aggiungiSuggerimento',
+  props<{ suggerimento: string }>()
 );

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
+  aggiungiSuggerimento,
   aggiungiTitolo,
   nuovaPartita,
 } from '../guess-stato-store/guess.actions';
@@ -21,6 +22,7 @@ export class PaginaGiocoGuessComponent implements OnInit {
   nomeFilmOffuscato$ = this.giocoGuess$.pipe(map((x) => x.nomeOffuscato));
   lettereUtente$ = this.giocoGuess$.pipe(map((x) => x.lettereUtente));
   counter$ = this.giocoGuess$.pipe(map((x) => x.counter));
+  suggerimento$ = this.giocoGuess$.pipe(map((x) => x.suggerimento));
 
   ngOnInit(): void {
     // Recuperare un film a caso tra i 6 proposti
@@ -36,5 +38,8 @@ export class PaginaGiocoGuessComponent implements OnInit {
 
   clickNuovaPartita() {
     this.store.dispatch(nuovaPartita());
+  }
+  clickSuggerimento(suggerimento: string) {
+    this.store.dispatch(aggiungiSuggerimento({ suggerimento }));
   }
 }
