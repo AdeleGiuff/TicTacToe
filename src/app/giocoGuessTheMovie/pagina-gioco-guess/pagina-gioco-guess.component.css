@@ -28,4 +28,6 @@
 }
 .input-group {
   margin-bottom: 3px;
+  display: flexbox;
+  flex-direction: column;
 }

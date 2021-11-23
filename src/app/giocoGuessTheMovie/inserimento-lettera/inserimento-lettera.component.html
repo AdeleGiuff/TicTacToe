@@ -1,1 +1,21 @@
-<p>inserimento-lettera works!</p>
+<form>
+  <div class="input-group">
+    <input
+      type="text"
+      name="lettera"
+      [(ngModel)]="lettera"
+      class="form-control"
+      placeholder="Inserisci la lettera"
+      aria-label="Recipient's username"
+      aria-describedby="button-addon2"
+    />
+    <button
+      class="btn btn-outline-warning"
+      type="button"
+      id="button-addon2"
+      (click)="buttonClick()"
+    >
+      indovina
+    </button>
+  </div>
+</form>

@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-inserimento-lettera',
   templateUrl: './inserimento-lettera.component.html',
-  styleUrls: ['./inserimento-lettera.component.css']
+  styleUrls: ['./inserimento-lettera.component.css'],
 })
 export class InserimentoLetteraComponent implements OnInit {
+  lettera: string;
 
-  constructor() { }
+  @Output() aggiungiLettera: EventEmitter<any> = new EventEmitter();
 
-  ngOnInit(): void {
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  buttonClick() {
+    this.aggiungiLettera.emit(this.lettera);
+    this.lettera = '';
   }
-
 }

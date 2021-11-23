@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { QuadratoComponent } from './giocoTicTacToe/quadrato/quadrato.component';
@@ -19,6 +19,7 @@ import { InserimentoLetteraComponent } from './giocoGuessTheMovie/inserimento-le
 import { ComposizioneTitoloComponent } from './giocoGuessTheMovie/composizione-titolo/composizione-titolo.component';
 import { InserimentoTitoloComponent } from './giocoGuessTheMovie/inserimento-titolo/inserimento-titolo.component';
 import { PulsantiSuggerimentoComponent } from './giocoGuessTheMovie/pulsanti-suggerimento/pulsanti-suggerimento.component';
+import { GiocoGuessReducer } from './giocoGuessTheMovie/guess-stato-store/guess-reducer';
 
 @NgModule({
   declarations: [
@@ -40,8 +41,10 @@ import { PulsantiSuggerimentoComponent } from './giocoGuessTheMovie/pulsanti-sug
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
     StoreModule.forRoot({
       griglia: grigliaReducer,
+      giocoGuess: GiocoGuessReducer,
     }),
     StoreDevtoolsModule.instrument(),
   ],

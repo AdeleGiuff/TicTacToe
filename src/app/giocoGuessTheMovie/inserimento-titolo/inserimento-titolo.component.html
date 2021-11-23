@@ -1,1 +1,21 @@
-<p>inserimento-titolo works!</p>
+<form>
+  <div class="input-group">
+    <input
+      type="text"
+      name="titoloFilm"
+      [(ngModel)]="titoloFilm"
+      class="form-control"
+      placeholder="Inserisci il nome del film"
+      aria-label="Recipient's username"
+      aria-describedby="button-addon2"
+    />
+    <button
+      (click)="buttonClick()"
+      class="btn btn-outline-warning"
+      type="button"
+      id="button-addon2"
+    >
+      indovina
+    </button>
+  </div>
+</form>
