@@ -13,6 +13,9 @@ export class InserimentoTitoloComponent implements OnInit {
 
   ngOnInit(): void {}
   buttonClick() {
+    if (!this.titoloFilm) {
+      alert('scrivi una titolo');
+    }
     this.aggiungiTitolo.emit(this.titoloFilm);
     this.titoloFilm = '';
   }

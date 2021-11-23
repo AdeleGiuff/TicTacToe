@@ -24,15 +24,15 @@ export class PaginaGiocoGuessComponent implements OnInit {
   counter$ = this.giocoGuess$.pipe(map((x) => x.counter));
   suggerimento$ = this.giocoGuess$.pipe(map((x) => x.suggerimento));
 
-  ngOnInit(): void {
-    // Recuperare un film a caso tra i 6 proposti
-  }
+  ngOnInit(): void {}
 
   clickAggiungiLettera(lettera: string) {
     console.log(lettera);
     this.store.dispatch(aggiungiLettera({ lettera }));
   }
   clickAggiungiTitolo(titoloFilm: string) {
+    console.log(titoloFilm);
+
     this.store.dispatch(aggiungiTitolo({ titoloFilm }));
   }
 

@@ -26,8 +26,9 @@
         <div class="indovinaFilm">
           <div class="textBody">
             <p class="card-text">Indovina il film</p>
-            <app-inserimento-titolo>
+            <app-inserimento-titolo
               (aggiungiTitolo)="clickAggiungiTitolo($event)"
+            >
             </app-inserimento-titolo>
           </div>
         </div>
@@ -36,8 +37,9 @@
   </div>
   <div class="buttonBox mt-2">
     <a href="#" class="btn btn-outline-info mr-3 w-40">abbandona :(</a>
-    <app-pulsanti-suggerimento>
+    <app-pulsanti-suggerimento
       (aggiungiSuggerimento)="clickSuggerimento($event)"
+    >
     </app-pulsanti-suggerimento>
   </div>
 </div>

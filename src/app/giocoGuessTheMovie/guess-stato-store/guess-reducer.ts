@@ -107,7 +107,8 @@ function rivelaNomeIntero(nome: string, titoloUtente: string) {
     nomeOffuscato == nome;
   }
   console.log('hi');
-  return nomeOffuscato;
+  // bisognava returnare il nome non il nomeOffuscato!!!!
+  return nome;
 }
 
 function setSconfitta(counter: any) {
